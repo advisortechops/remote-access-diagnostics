@@ -1,0 +1,29 @@
+name: Sync diagnostics release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feature/dev-tunnel-diagnostics
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Validate dev profile
+        run: |
+          python3 tunnel_agent.py --env dev --no-upload

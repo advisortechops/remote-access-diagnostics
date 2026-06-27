@@ -1,0 +1,16 @@
+environment: dev
+region: us-east-1
+
+tunnel:
+  name: dev-remote-access
+  mode: diagnostics
+  gateway: dev-vpn-gw.internal.local
+  port: 443
+  protocol: tls
+  healthcheck_path: /healthz
+
+logging:
+  local_path: ./logs
+  upload_enabled: true
+  s3_bucket: s3://remote-access-dev-logs/vpn/session-dumps/
+  retention_days: 7

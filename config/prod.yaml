@@ -1,0 +1,16 @@
+environment: prod
+region: us-east-1
+
+tunnel:
+  name: prod-remote-access
+  mode: diagnostics
+  gateway: prod-vpn-gw.internal.local
+  port: 443
+  protocol: tls
+  healthcheck_path: /healthz
+
+logging:
+  local_path: ./logs
+  upload_enabled: true
+  s3_bucket: s3://remote-access-prod-logs/vpn/session-dumps/
+  retention_days: 14

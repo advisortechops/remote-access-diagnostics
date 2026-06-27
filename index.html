@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Remote Access Diagnostics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 900px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    code, pre {
+      background: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre {
+      padding: 14px;
+      overflow-x: auto;
+    }
+
+    .note {
+      border-left: 4px solid #999;
+      padding-left: 12px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Remote Access Diagnostics</h1>
+
+  <p>
+    Internal utility for validating VPN, ZTNA, and remote-access tunnel readiness
+    across dev and production environments.
+  </p>
+
+  <h2>Overview</h2>
+  <p>
+    The diagnostics agent performs gateway reachability checks, TLS validation,
+    local network-state collection, session log generation, and optional S3
+    diagnostics upload.
+  </p>
+
+  <h2>Environment Profiles</h2>
+  <ul>
+    <li><code>dev</code> - development tunnel diagnostics</li>
+    <li><code>prod</code> - production tunnel diagnostics</li>
+  </ul>
+
+  <h2>Usage</h2>
+  <pre>python3 tunnel_agent.py --env dev</pre>
+  <pre>python3 tunnel_agent.py --env prod</pre>
+
+  <h2>S3 Diagnostics Upload</h2>
+  <p>
+    Diagnostics bundles are written locally and may be uploaded to the configured
+    S3 log archive for support review.
+  </p>
+
+  <div class="note">
+    <strong>Note:</strong> The legacy S3 uploader is still present for older
+    support workstations and will be replaced by IAM role-based upload.
+  </div>
+
+  <h2>Documentation</h2>
+  <ul>
+    <li><a href="docs/deployment-notes.md">Deployment notes</a></li>
+    <li><a href="docs/troubleshooting.md">Troubleshooting</a></li>
+  </ul>
+</body>
+</html>
