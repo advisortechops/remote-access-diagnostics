@@ -15,3 +15,8 @@ logs/*.log
 
 dist/
 build/
+
+# Keep published maintenance logs
+!logs/maintenance/
+!logs/maintenance/daily/
+!logs/maintenance/daily/*.log

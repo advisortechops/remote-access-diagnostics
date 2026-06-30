@@ -1,0 +1,53 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260626.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-26T09:17:01Z] [INFO ] Starting daily maintenance run
+[2026-06-26T09:17:02Z] [INFO ] Validating YAML syntax
+[2026-06-26T09:17:02Z] [INFO ] config/dev.yaml OK
+[2026-06-26T09:17:02Z] [INFO ] config/prod.yaml OK
+[2026-06-26T09:17:03Z] [INFO ] Validating script presence
+[2026-06-26T09:17:03Z] [INFO ] tunnel_agent.py OK
+[2026-06-26T09:17:03Z] [INFO ] scripts/upload_diagnostics.py OK
+[2026-06-26T09:17:03Z] [INFO ] scripts/collect_network_state.sh OK
+[2026-06-26T09:17:04Z] [INFO ] Running prod diagnostics
+[2026-06-26T09:17:04Z] [INFO ] gateway=prod-vpn-gw.internal.local
+[2026-06-26T09:17:04Z] [INFO ] port=443
+[2026-06-26T09:17:04Z] [INFO ] protocol=tls
+[2026-06-26T09:17:05Z] [INFO ] upload_target=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-26T09:17:05Z] [INFO ] Running TCP reachability check
+[2026-06-26T09:17:08Z] [ERROR] TCP connection timed out
+[2026-06-26T09:17:08Z] [ERROR] error_code=TcpTimeout
+[2026-06-26T09:17:08Z] [ERROR] timeout_seconds=3
+[2026-06-26T09:17:09Z] [WARN ] TLS validation skipped
+[2026-06-26T09:17:09Z] [INFO ] Diagnostics log written
+[2026-06-26T09:17:09Z] [INFO ] session_id=prod-20260626091709-c7e42d11
+[2026-06-26T09:17:09Z] [INFO ] output_path=./logs/remote-access-session-prod-20260626091709-c7e42d11.json
+[2026-06-26T09:17:10Z] [ERROR] S3 upload failed
+[2026-06-26T09:17:10Z] [ERROR] error_code=UploadSkipped
+[2026-06-26T09:17:10Z] [ERROR] reason="Legacy uploader requires configured runtime credentials."
+[2026-06-26T09:17:11Z] [ERROR] DAILY maintenance completed with failed status
+
+Summary:
+  daily=true
+  status=failed
+  successful_checks=2
+  failed_checks=2
+  skipped_checks=1
+  primary_error=TcpTimeout
+  secondary_error=UploadSkipped

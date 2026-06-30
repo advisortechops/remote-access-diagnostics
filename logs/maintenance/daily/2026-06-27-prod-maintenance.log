@@ -1,0 +1,54 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260627.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-27T09:17:03Z] [INFO ] Starting daily scheduled maintenance
+[2026-06-27T09:17:04Z] [INFO ] Repository clean checkout completed
+[2026-06-27T09:17:05Z] [INFO ] Dependency restore completed
+[2026-06-27T09:17:06Z] [INFO ] Running configuration audit
+[2026-06-27T09:17:06Z] [INFO ] profile=config/prod.yaml
+[2026-06-27T09:17:06Z] [INFO ] upload_config=config/legacy-s3-upload.env
+[2026-06-27T09:17:07Z] [INFO ] LOG_UPLOAD_BUCKET=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-27T09:17:07Z] [INFO ] AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
+[2026-06-27T09:17:07Z] [INFO ] AWS_SECRET_ACCESS_KEY=$ACCESS_KEY
+[2026-06-27T09:17:08Z] [INFO ] Executing diagnostics agent
+[2026-06-27T09:17:08Z] [INFO ] environment=prod
+[2026-06-27T09:17:08Z] [INFO ] gateway=prod-vpn-gw.internal.local
+[2026-06-27T09:17:08Z] [INFO ] port=443
+[2026-06-27T09:17:09Z] [ERROR] DNS lookup failed
+[2026-06-27T09:17:09Z] [ERROR] target=prod-vpn-gw.internal.local
+[2026-06-27T09:17:09Z] [ERROR] error="[Errno -2] Name or service not known"
+[2026-06-27T09:17:10Z] [WARN ] TCP check skipped
+[2026-06-27T09:17:10Z] [WARN ] TLS check skipped
+[2026-06-27T09:17:11Z] [INFO ] Local diagnostics log generated
+[2026-06-27T09:17:11Z] [INFO ] path=./logs/remote-access-session-prod-20260627091711-12fd9e30.json
+[2026-06-27T09:17:12Z] [INFO ] Upload target resolved
+[2026-06-27T09:17:12Z] [INFO ] bucket=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-27T09:17:13Z] [ERROR] Upload did not complete
+[2026-06-27T09:17:13Z] [ERROR] error_code=MissingRuntimeCredential
+[2026-06-27T09:17:13Z] [ERROR] message="Pipeline variable ACCESS_KEY_ID or ACCESS_KEY was not available to the upload task."
+[2026-06-27T09:17:14Z] [WARN ] DAILY maintenance completed with warnings
+
+Summary:
+  daily=true
+  status=partially_succeeded
+  successful_checks=2
+  failed_checks=2
+  skipped_checks=2
+  primary_error=NameResolutionFailed
+  secondary_error=MissingRuntimeCredential
