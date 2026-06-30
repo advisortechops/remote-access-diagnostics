@@ -1,0 +1,50 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260628.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-28T09:17:05Z] [INFO ] Starting daily job preparation
+[2026-06-28T09:17:06Z] [INFO ] Schedule: daily
+[2026-06-28T09:17:06Z] [INFO ] Timeout: 30 minutes
+[2026-06-28T09:17:07Z] [INFO ] Environment variable check started
+[2026-06-28T09:17:07Z] [INFO ] APP_ENV=prod
+[2026-06-28T09:17:07Z] [INFO ] REGION=us-east-1
+[2026-06-28T09:17:07Z] [INFO ] LOG_UPLOAD_BUCKET=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-28T09:17:08Z] [WARN ] AWS_ACCESS_KEY_ID unresolved placeholder
+[2026-06-28T09:17:08Z] [WARN ] AWS_SECRET_ACCESS_KEY unresolved placeholder
+[2026-06-28T09:17:09Z] [INFO ] Executing daily tunnel validation
+[2026-06-28T09:17:09Z] [INFO ] Command: python3 tunnel_agent.py --env prod --no-upload
+[2026-06-28T09:17:10Z] [INFO ] Loading environment profile: prod
+[2026-06-28T09:17:10Z] [INFO ] Daily validation mode enabled
+[2026-06-28T09:17:10Z] [INFO ] Tunnel profile: prod-remote-access
+[2026-06-28T09:17:10Z] [INFO ] Gateway: prod-vpn-gw.internal.local:443
+[2026-06-28T09:17:11Z] [ERROR] TCP reachability check failed
+[2026-06-28T09:17:11Z] [ERROR] error_code=NameResolutionFailed
+[2026-06-28T09:17:11Z] [WARN ] TLS validation check skipped
+[2026-06-28T09:17:12Z] [INFO ] Session ID: prod-20260628091712-6c4ad81b
+[2026-06-28T09:17:12Z] [INFO ] Diagnostics log written: ./logs/remote-access-session-prod-20260628091712-6c4ad81b.json
+[2026-06-28T09:17:13Z] [INFO ] Upload disabled for this run
+[2026-06-28T09:17:14Z] [WARN ] DAILY maintenance completed with degraded status
+
+Summary:
+  daily=true
+  status=partially_succeeded
+  successful_checks=2
+  failed_checks=1
+  skipped_checks=2
+  primary_error=NameResolutionFailed
+  secondary_error=UploadDisabled

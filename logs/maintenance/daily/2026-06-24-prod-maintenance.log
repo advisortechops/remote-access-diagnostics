@@ -1,0 +1,49 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260624.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-24T09:17:02Z] [INFO ] Starting daily maintenance run
+[2026-06-24T09:17:03Z] [INFO ] Checking out repository remote-access-diagnostics
+[2026-06-24T09:17:05Z] [INFO ] Loading environment profile: config/prod.yaml
+[2026-06-24T09:17:06Z] [INFO ] Tunnel profile: prod-remote-access
+[2026-06-24T09:17:06Z] [INFO ] Gateway: prod-vpn-gw.internal.local:443
+[2026-06-24T09:17:07Z] [INFO ] Protocol: tls
+[2026-06-24T09:17:08Z] [INFO ] Validating local log directory: ./logs
+[2026-06-24T09:17:08Z] [INFO ] Local log directory available
+[2026-06-24T09:17:09Z] [INFO ] Starting DNS resolution check
+[2026-06-24T09:17:09Z] [ERROR] DNS resolution failed
+[2026-06-24T09:17:09Z] [ERROR] target=prod-vpn-gw.internal.local
+[2026-06-24T09:17:09Z] [ERROR] error_code=NameResolutionFailed
+[2026-06-24T09:17:09Z] [ERROR] error_message="[Errno -2] Name or service not known"
+[2026-06-24T09:17:10Z] [WARN ] TCP reachability skipped because DNS resolution failed
+[2026-06-24T09:17:10Z] [WARN ] TLS validation skipped because TCP check did not complete
+[2026-06-24T09:17:11Z] [INFO ] Creating diagnostics session record
+[2026-06-24T09:17:11Z] [INFO ] session_id=prod-20260624091711-4b2a91c0
+[2026-06-24T09:17:11Z] [INFO ] local_log=./logs/remote-access-session-prod-20260624091711-4b2a91c0.json
+[2026-06-24T09:17:12Z] [INFO ] Upload target resolved: s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-24T09:17:12Z] [WARN ] Upload skipped for scheduled validation run
+[2026-06-24T09:17:13Z] [WARN ] DAILY maintenance completed with degraded status
+
+Summary:
+  daily=true
+  status=degraded
+  successful_checks=2
+  failed_checks=1
+  skipped_checks=2
+  primary_error=NameResolutionFailed
+  secondary_error=UploadSkipped

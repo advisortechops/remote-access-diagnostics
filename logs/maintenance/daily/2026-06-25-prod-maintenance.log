@@ -1,0 +1,54 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260625.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-25T09:17:04Z] [INFO ] Starting daily maintenance run
+[2026-06-25T09:17:05Z] [INFO ] Source branch: refs/heads/main
+[2026-06-25T09:17:06Z] [INFO ] Loading runtime dependencies
+[2026-06-25T09:17:07Z] [INFO ] Requirement already satisfied: boto3>=1.34.0
+[2026-06-25T09:17:07Z] [INFO ] Requirement already satisfied: PyYAML>=6.0.1
+[2026-06-25T09:17:07Z] [INFO ] Requirement already satisfied: requests>=2.31.0
+[2026-06-25T09:17:08Z] [INFO ] Loading environment profile: config/prod.yaml
+[2026-06-25T09:17:08Z] [INFO ] Loading upload profile: config/legacy-s3-upload.env
+[2026-06-25T09:17:09Z] [INFO ] LOG_UPLOAD_BUCKET=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-25T09:17:09Z] [INFO ] AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
+[2026-06-25T09:17:09Z] [INFO ] AWS_SECRET_ACCESS_KEY=$ACCESS_KEY
+[2026-06-25T09:17:10Z] [INFO ] Running DNS resolution check
+[2026-06-25T09:17:10Z] [ERROR] DNS resolution failed for prod-vpn-gw.internal.local
+[2026-06-25T09:17:10Z] [ERROR] error_code=NameResolutionFailed
+[2026-06-25T09:17:11Z] [WARN ] TCP connectivity check skipped
+[2026-06-25T09:17:11Z] [WARN ] TLS validation check skipped
+[2026-06-25T09:17:12Z] [INFO ] Writing diagnostics session log
+[2026-06-25T09:17:12Z] [INFO ] session_id=prod-20260625091712-9d1e0f7a
+[2026-06-25T09:17:12Z] [INFO ] local_log=./logs/remote-access-session-prod-20260625091712-9d1e0f7a.json
+[2026-06-25T09:17:13Z] [INFO ] Preparing S3 diagnostics upload
+[2026-06-25T09:17:13Z] [ERROR] Upload failed
+[2026-06-25T09:17:13Z] [ERROR] component=s3_diagnostics_upload
+[2026-06-25T09:17:13Z] [ERROR] target=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-25T09:17:13Z] [ERROR] error_code=CredentialsNotConfigured
+[2026-06-25T09:17:13Z] [ERROR] error_message="Legacy upload variables were present but not resolved by the pipeline runtime."
+[2026-06-25T09:17:14Z] [ERROR] DAILY maintenance completed with failed status
+
+Summary:
+  daily=true
+  status=failed
+  successful_checks=2
+  failed_checks=2
+  skipped_checks=2
+  primary_error=NameResolutionFailed
+  secondary_error=CredentialsNotConfigured

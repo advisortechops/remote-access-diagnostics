@@ -1,0 +1,74 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+==============================================================================
+Project             : advisor-remote-access
+Repository          : remote-access-diagnostics
+Pipeline            : vpn-diagnostics-daily-maintenance
+Branch              : main
+Build               : 20260630.1
+Schedule            : daily
+Agent Pool          : ubuntu-latest
+Runtime             : Python 3.12
+Environment         : prod
+Region              : us-east-1
+Upload Mode         : legacy
+LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
+==============================================================================
+
+[2026-06-30T09:17:06Z] [INFO ] Starting daily pipeline
+[2026-06-30T09:17:07Z] [INFO ] Pipeline name: vpn-diagnostics-daily-maintenance
+[2026-06-30T09:17:07Z] [INFO ] Reason: Schedule
+[2026-06-30T09:17:08Z] [INFO ] Branch: main
+[2026-06-30T09:17:09Z] [INFO ] Loading pipeline variables
+[2026-06-30T09:17:09Z] [INFO ] APP_ENV=prod
+[2026-06-30T09:17:09Z] [INFO ] AWS_REGION=us-east-1
+[2026-06-30T09:17:09Z] [INFO ] TUNNEL_PROFILE=prod-remote-access
+[2026-06-30T09:17:10Z] [INFO ] CONFIG_PATH=config/prod.yaml
+[2026-06-30T09:17:10Z] [INFO ] UPLOAD_CONFIG=config/legacy-s3-upload.env
+[2026-06-30T09:17:10Z] [INFO ] LOG_UPLOAD_BUCKET=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-30T09:17:10Z] [INFO ] AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
+[2026-06-30T09:17:10Z] [INFO ] AWS_SECRET_ACCESS_KEY=$ACCESS_KEY
+[2026-06-30T09:17:11Z] [INFO ] Installing dependencies
+[2026-06-30T09:17:12Z] [INFO ] Requirement already satisfied: boto3>=1.34.0
+[2026-06-30T09:17:12Z] [INFO ] Requirement already satisfied: PyYAML>=6.0.1
+[2026-06-30T09:17:12Z] [INFO ] Requirement already satisfied: requests>=2.31.0
+[2026-06-30T09:17:13Z] [INFO ] Running daily production diagnostics
+[2026-06-30T09:17:13Z] [INFO ] environment=prod
+[2026-06-30T09:17:13Z] [INFO ] region=us-east-1
+[2026-06-30T09:17:13Z] [INFO ] gateway=prod-vpn-gw.internal.local
+[2026-06-30T09:17:13Z] [INFO ] port=443
+[2026-06-30T09:17:13Z] [INFO ] protocol=tls
+[2026-06-30T09:17:14Z] [INFO ] Step 1/7: configuration validation started
+[2026-06-30T09:17:14Z] [INFO ] Step 1/7: configuration validation completed
+[2026-06-30T09:17:15Z] [INFO ] Step 2/7: local log directory validation started
+[2026-06-30T09:17:15Z] [INFO ] Step 2/7: local log directory validation completed
+[2026-06-30T09:17:16Z] [INFO ] Step 3/7: DNS resolution started
+[2026-06-30T09:17:16Z] [ERROR] DNS resolution failed
+[2026-06-30T09:17:16Z] [ERROR] target=prod-vpn-gw.internal.local
+[2026-06-30T09:17:16Z] [ERROR] error_code=NameResolutionFailed
+[2026-06-30T09:17:16Z] [ERROR] error_message="[Errno -2] Name or service not known"
+[2026-06-30T09:17:17Z] [WARN ] Step 4/7: TCP reachability skipped
+[2026-06-30T09:17:17Z] [WARN ] Step 5/7: TLS validation skipped
+[2026-06-30T09:17:18Z] [INFO ] Step 6/7: local diagnostics generation started
+[2026-06-30T09:17:18Z] [INFO ] session_id=prod-20260630091718-f8d21b4c
+[2026-06-30T09:17:18Z] [INFO ] output_path=./logs/remote-access-session-prod-20260630091718-f8d21b4c.json
+[2026-06-30T09:17:19Z] [INFO ] Step 7/7: diagnostics upload started
+[2026-06-30T09:17:19Z] [INFO ] upload_mode=legacy
+[2026-06-30T09:17:19Z] [INFO ] upload_bucket=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-06-30T09:17:19Z] [ERROR] Diagnostics upload failed
+[2026-06-30T09:17:19Z] [ERROR] error_code=CredentialResolutionFailed
+[2026-06-30T09:17:19Z] [ERROR] message="AWS compatibility variables were present but were not resolved by the scheduled runtime."
+[2026-06-30T09:17:20Z] [ERROR] access_key_variable=AWS_ACCESS_KEY_ID
+[2026-06-30T09:17:20Z] [ERROR] secret_key_variable=AWS_SECRET_ACCESS_KEY
+[2026-06-30T09:17:21Z] [ERROR] Daily production diagnostics completed with failed status
+
+Summary:
+  daily=true
+  status=failed
+  successful_checks=2
+  failed_checks=2
+  skipped_checks=2
+  primary_error=NameResolutionFailed
+  secondary_error=CredentialResolutionFailed
