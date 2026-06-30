@@ -9,7 +9,7 @@ Build               : 20260624.1
 Schedule            : daily
 Agent Pool          : ubuntu-latest
 Runtime             : Python 3.12
-Environment         : prod
+Environment         : raymondjames.com
 Region              : us-east-1
 Upload Mode         : legacy
 LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
