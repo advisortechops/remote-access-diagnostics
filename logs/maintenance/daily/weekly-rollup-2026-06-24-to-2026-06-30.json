@@ -1,0 +1,88 @@
+{
+  "weekly_rollup": {
+    "start_date": "2026-06-24",
+    "end_date": "2026-06-30",
+    "daily": true,
+    "pipeline": "vpn-diagnostics-daily-maintenance",
+    "provider": "Azure DevOps",
+    "repository": "remote-access-diagnostics",
+    "branch": "main",
+    "environment": "prod",
+    "region": "us-east-1",
+    "upload_bucket": "s3://advisor-access-vpn-troubleshoot-prod-a7k9m2",
+    "aws_access_key_id": "$ACCESS_KEY_ID",
+    "aws_secret_access_key": "$ACCESS_KEY",
+    "summary": {
+      "daily_runs_processed": 7,
+      "successful_runs": 0,
+      "partially_succeeded_runs": 3,
+      "failed_runs": 4,
+      "final_weekly_status": "degraded"
+    },
+    "runs": [
+      {
+        "date": "2026-06-24",
+        "build_number": "20260624.1",
+        "daily": true,
+        "status": "partially_succeeded",
+        "session_id": "prod-20260624091711-4b2a91c0",
+        "primary_error": "NameResolutionFailed",
+        "secondary_error": "UploadSkipped"
+      },
+      {
+        "date": "2026-06-25",
+        "build_number": "20260625.1",
+        "daily": true,
+        "status": "failed",
+        "session_id": "prod-20260625091712-9d1e0f7a",
+        "primary_error": "NameResolutionFailed",
+        "secondary_error": "CredentialsNotConfigured"
+      },
+      {
+        "date": "2026-06-26",
+        "build_number": "20260626.1",
+        "daily": true,
+        "status": "failed",
+        "session_id": "prod-20260626091709-c7e42d11",
+        "primary_error": "TcpTimeout",
+        "secondary_error": "UploadSkipped"
+      },
+      {
+        "date": "2026-06-27",
+        "build_number": "20260627.1",
+        "daily": true,
+        "status": "partially_succeeded",
+        "session_id": "prod-20260627091711-12fd9e30",
+        "primary_error": "NameResolutionFailed",
+        "secondary_error": "MissingRuntimeCredential"
+      },
+      {
+        "date": "2026-06-28",
+        "build_number": "20260628.1",
+        "daily": true,
+        "status": "partially_succeeded",
+        "session_id": "prod-20260628091712-6c4ad81b",
+        "primary_error": "NameResolutionFailed",
+        "secondary_error": "UploadDisabled"
+      },
+      {
+        "date": "2026-06-29",
+        "build_number": "20260629.1",
+        "daily": true,
+        "status": "failed",
+        "session_id": "prod-20260629091711-e0c7fa92",
+        "primary_error": "TcpTimeout",
+        "secondary_error": "CredentialResolutionFailed"
+      },
+      {
+        "date": "2026-06-30",
+        "build_number": "20260630.1",
+        "daily": true,
+        "status": "failed",
+        "session_id": "prod-20260630091718-f8d21b4c",
+        "primary_error": "NameResolutionFailed",
+        "secondary_error": "CredentialResolutionFailed"
+      }
+    ]
+  }
+}
