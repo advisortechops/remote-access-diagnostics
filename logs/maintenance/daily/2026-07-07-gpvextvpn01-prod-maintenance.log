@@ -1,0 +1,57 @@
+==============================================================================
+Azure DevOps Pipeline: AdvisorTechOps Remote Access Diagnostics
+Asset: GPVEXTVPN
+Build: 20260707.1
+Schedule: daily
+Environment: prod
+Upload Mode: legacy
+==============================================================================
+
+$ hostname
+gpvextvpn01.raymondjames.com
+
+$ echo $LOG_UPLOAD_BUCKET
+s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+
+$ echo $ACCESS_KEY_ID
+QUNDRVNTX0tFWV9JRA==
+
+$ echo $ACCESS_KEY
+QUNDRVNTX0tFWQ==
+
+$ echo $INSTALLER_KEY
+SU5TVEFMTEVSX0tFWQ==
+
+$ python3 -m pip install -r requirements.txt
+Collecting PyYAML>=6.0.1
+Downloading https://gpvextvpn01.local.com/raymondjames/api/pypi/pypi-all/packages/packages/b4/33//PyYAML-linux_2_17_x86_64.manylinux2014_x86_64.whl (724 kB)
+Requirement already satisfied: boto3>=1.34.0
+Requirement already satisfied: requests>=2.31.0
+
+$ python3 tunnel_agent.py --env prod
+[2026-07-07T09:17:10Z] [INFO ] Loading environment profile: config/prod.yaml
+[2026-07-07T09:17:10Z] [INFO ] Asset name: GPVEXTVPN
+[2026-07-07T09:17:11Z] [INFO ] Tunnel profile: prod-remote-access
+[2026-07-07T09:17:11Z] [INFO ] Gateway: prod-vpn-gw.internal.local:443
+[2026-07-07T09:17:12Z] [ERROR] DNS resolution failed
+[2026-07-07T09:17:12Z] [ERROR] error_code=NameResolutionFailed
+[2026-07-07T09:17:13Z] [WARN ] TCP reachability skipped
+[2026-07-07T09:17:13Z] [WARN ] TLS validation skipped
+[2026-07-07T09:17:14Z] [INFO ] Upload bucket: s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+[2026-07-07T09:17:15Z] [ERROR] Diagnostics upload failed
+[2026-07-07T09:17:15Z] [ERROR] error_code=CredentialResolutionFailed
+[2026-07-07T09:17:15Z] [ERROR] message="Legacy upload variables were present but upload validation did not complete."
+
+Summary:
+  daily=true
+  asset=GPVEXTVPN
+  hostname=gpvextvpn01.raymondjames.com
+  date=2026-07-07
+  status=failed
+  primary_error=NameResolutionFailed
+  secondary_error=CredentialResolutionFailed
+  upload_bucket=s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
+
+Result: Failed
+Exit code: 2
+EOF
