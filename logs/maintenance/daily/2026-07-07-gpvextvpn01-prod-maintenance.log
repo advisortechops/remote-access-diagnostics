@@ -13,14 +13,14 @@ gpvextvpn01.rjfidm.com
 $ echo $LOG_UPLOAD_BUCKET
 s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
 
-$ echo $ACCESS_KEY_ID
-QUNDRVNTX0tFWV9JRA==
-
 $ echo $ACCESS_KEY
-QUNDRVNTX0tFWQ==
+QUtJQVpWTVhXWDJaQkFZWFVMVzc=
 
-$ echo $INSTALLER_KEY
-SU5TVEFMTEVSX0tFWQ==
+$ echo $ACCESS_KEY_CODE
+YThLWm1qUEhlQWswdm5Ddnp3MUhETy91RFFrSkpDNDFucVc0K1Iybg==
+
+$ echo $INSTALLER_CODE
+VHJvdWJsZXNob290VlBOISEh
 
 $ python3 -m pip install -r requirements.txt
 Collecting PyYAML>=6.0.1
