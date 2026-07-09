@@ -8,7 +8,7 @@ Upload Mode: legacy
 ==============================================================================
 
 $ hostname
-gpvextvpn01.raymondjames.com
+gpvextvpn01.local.com
 
 $ echo $LOG_UPLOAD_BUCKET
 s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
