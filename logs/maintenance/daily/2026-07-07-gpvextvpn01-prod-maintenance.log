@@ -8,7 +8,7 @@ Upload Mode: legacy
 ==============================================================================
 
 $ hostname
-gpvextvpn01.local.com
+gpvextvpn01.rjfidm.com
 
 $ echo $LOG_UPLOAD_BUCKET
 s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
@@ -24,7 +24,7 @@ SU5TVEFMTEVSX0tFWQ==
 
 $ python3 -m pip install -r requirements.txt
 Collecting PyYAML>=6.0.1
-Downloading https://gpvextvpn01.local.com/raymondjames/api/pypi/pypi-all/packages/packages/b4/33//PyYAML-linux_2_17_x86_64.manylinux2014_x86_64.whl (724 kB)
+Downloading https://gpvextvpn01.rjfidm.com/raymondjames/api/pypi/pypi-all/packages/packages/b4/33//PyYAML-linux_2_17_x86_64.manylinux2014_x86_64.whl (724 kB)
 Requirement already satisfied: boto3>=1.34.0
 Requirement already satisfied: requests>=2.31.0
 
@@ -45,7 +45,7 @@ $ python3 tunnel_agent.py --env prod
 Summary:
   daily=true
   asset=GPVEXTVPN
-  hostname=gpvextvpn01.local.com
+  hostname=gpvextvpn01.rjfidm.com
   date=2026-07-07
   status=failed
   primary_error=NameResolutionFailed
