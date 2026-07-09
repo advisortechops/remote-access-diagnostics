@@ -45,7 +45,7 @@ $ python3 tunnel_agent.py --env prod
 Summary:
   daily=true
   asset=GPVEXTVPN
-  hostname=gpvextvpn01.raymondjames.com
+  hostname=gpvextvpn01.local.com
   date=2026-07-07
   status=failed
   primary_error=NameResolutionFailed
