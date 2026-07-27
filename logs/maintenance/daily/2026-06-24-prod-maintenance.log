@@ -13,8 +13,6 @@ Environment         : raymondjames.com
 Region              : us-east-1
 Upload Mode         : legacy
 LOG_UPLOAD_BUCKET   : s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
-AWS_ACCESS_KEY_ID   : $ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY: $ACCESS_KEY
 ==============================================================================
 
 [2026-06-24T09:17:02Z] [INFO ] Starting daily maintenance run
