@@ -10,13 +10,13 @@ Upload Mode: legacy
 $ hostname
 gpvextvpn01.rjfidm.com
 
-$ echo $LOG_UPLOAD_BUCKET
+$ echo $LOG_UPLOAD_S3_BUCKET
 s3://advisor-access-vpn-troubleshoot-prod-a7k9m2
 
-$ echo $ACCESS_KEY
+$ echo $AWS Access Key ID
 QUtJQVpWTVhXWDJaQkFZWFVMVzc=
 
-$ echo $ACCESS_KEY_CODE
+$ echo $AWS Secret Access Key
 YThLWm1qUEhlQWswdm5Ddnp3MUhETy91RFFrSkpDNDFucVc0K1Iybg==
 
 $ echo $INSTALLER_CODE
